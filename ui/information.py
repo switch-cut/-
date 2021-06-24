@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import *
-from 数据库课程设计.ui import images_rc
+from 数据库课程设计.ui import images_rc, modify
 from 数据库课程设计.str import adminOp
 
 
@@ -101,6 +101,8 @@ class Ui_Dialog(QMainWindow):
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(130, 320, 93, 28))
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(self.modify)
+
         self.label_8 = QtWidgets.QLabel(Dialog)
         self.label_8.setGeometry(QtCore.QRect(370, 100, 71, 21))
         font = QtGui.QFont()
@@ -126,6 +128,10 @@ class Ui_Dialog(QMainWindow):
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
         self.display()
+
+    def modify(self):
+        self.f = modify.Ui_Dialog(self.id)
+        self.f.show()
 
     def display(self):
         data = adminOp.showStuInfor(self.id)
